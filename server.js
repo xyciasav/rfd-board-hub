@@ -5,7 +5,7 @@ import {join, extname} from 'node:path';
 import {randomBytes, timingSafeEqual, scryptSync} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
-const APP_VERSION=process.env.APP_VERSION||'0.6.2',PORT=Number(process.env.PORT||4380), ROOT=fileURLToPath(new URL('.',import.meta.url)), PUBLIC=join(ROOT,'public'), DATA=process.env.DATA_DIR||join(ROOT,'data'), DB=join(DATA,'hub.json');
+const APP_VERSION=process.env.APP_VERSION||'0.6.3',PORT=Number(process.env.PORT||4380), ROOT=fileURLToPath(new URL('.',import.meta.url)), PUBLIC=join(ROOT,'public'), DATA=process.env.DATA_DIR||join(ROOT,'data'), DB=join(DATA,'hub.json');
 const sessions=new Map(),pdfJobs=new Map(),maxBody=30_000_000;
 const seed={transactions:[],marketing:[{id:'welcome',title:'Build the fall campaign calendar',owner:'Communications',status:'In progress',due:'',channel:'All channels'}],newsletters:[{id:'first-issue',title:'Next RFD newsletter',status:'Outline',writer:'',due:'',sections:[{id:'opening',title:'Opening note',notes:'Why this moment matters',status:'Drafting'},{id:'action',title:'Action items',notes:'Events, volunteer asks, and links',status:'Needs input'}]}],integrations:{vikunja:{url:'',token:'',project:'Night of the Living Loud'},eventbrite:{eventId:'',token:''},buffer:{token:'',facebookChannel:'',instagramChannel:''}},eventMetrics:{sponsorsCommitted:0,revenueCommitted:0},activity:[]};
 let db=await load();

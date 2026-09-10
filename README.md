@@ -36,6 +36,8 @@ The repository includes a production `Dockerfile` and [compose.yaml](compose.yam
 
 The named `rfd-board-hub-data` volume preserves transactions, receipts, newsletter work, marketing work, targets, and integration settings across container upgrades. Put the service behind an HTTPS reverse proxy before exposing it outside the local network.
 
+The Portainer stack pulls versioned images from `ghcr.io/xyciasav/rfd-board-hub`. Change `RFD_HUB_VERSION`, enable **Re-pull image**, and update the stack to deploy a release. GitHub Actions publishes both the package version and `latest` after changes reach `main`.
+
 Set `PDF_GENERATOR_URL` to the base URL of the donation-letter generator service to enable the Marketing PDF form. Marketing work is pulled from the `Night of the Living Loud` and `Rage for Democracy` Vikunja projects when a task has a label containing `marketing` or `advertising`.
 
 Set `RFD_WRITER_URL` to the OpenAI-compatible Rage assistant API (normally `http://10.0.0.230:8085/v1`) and `RFD_WRITER_MODEL` to `rage-assistant`. The Hub asks that model to turn the form notes into a finished letter before sending it to the PDF renderer. `RFD_WRITER_TOKEN` is optional when the local API has no authentication.
