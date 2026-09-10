@@ -4,7 +4,7 @@ A private, self-hosted command center for Rage for Democracy board members. The 
 
 - Night of the Living Loud status pulled directly from Vikunja and Eventbrite
 - A shared organizational transaction ledger
-- A lightweight marketing work board
+- A marketing workspace fed by labeled Vikunja tasks, with a shared print-file library and PDF generation
 - Buffer performance insights calculated directly in the hub
 - A collaborative Substack issue handoff desk
 - A board activity trail
@@ -34,6 +34,8 @@ The repository includes a production `Dockerfile` and [compose.yaml](compose.yam
 7. Deploy the stack and open `http://YOUR-SERVER:4380`.
 
 The named `rfd-board-hub-data` volume preserves transactions, receipts, newsletter work, marketing work, targets, and integration settings across container upgrades. Put the service behind an HTTPS reverse proxy before exposing it outside the local network.
+
+Set `PDF_GENERATOR_URL` to the base URL of the donation-letter generator service to enable the Marketing PDF form. Marketing work is pulled from the `Night of the Living Loud` and `Rage for Democracy` Vikunja projects when a task has a label containing `marketing` or `advertising`.
 
 Each release uses a versioned Docker tag such as `rfd-board-hub:0.3.0`. The same version appears on the login screen, beside the signed-in account controls, in `/health`, and in `/api/session`, making it clear whether Portainer is actually running the latest build.
 
