@@ -1,6 +1,6 @@
 services:
   rfd-board-hub:
-    image: ${RFD_HUB_IMAGE:-ghcr.io/xyciasav/rfd-board-hub}:${RFD_HUB_VERSION:-0.6.3}
+    image: ghcr.io/xyciasav/rfd-board-hub:latest
     container_name: rfd-board-hub
     restart: unless-stopped
     ports:
@@ -9,7 +9,6 @@ services:
       NODE_ENV: production
       PORT: 3000
       DATA_DIR: /app/data
-      APP_VERSION: ${RFD_HUB_VERSION:-0.6.3}
       BOARD_PASSWORD: ${BOARD_PASSWORD:?Set a temporary BOARD_PASSWORD in Portainer}
       ALLOW_BOARD_PASSWORD_LOGIN: ${ALLOW_BOARD_PASSWORD_LOGIN:-true}
       AUTH_BYPASS: ${AUTH_BYPASS:-false}
