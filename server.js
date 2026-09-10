@@ -46,7 +46,7 @@ async function api(req,res,url){
  if(url==='/api/living-loud'&&req.method==='GET'){try{return json(res,200,{configured:true,data:await livingLoud()})}catch(e){return json(res,200,{configured:Boolean(db.integrations.vikunja.url),error:e.message})}}
  if(url==='/api/insights'&&req.method==='GET'){try{const data=await bufferInsightsDirect(),c=data.current;c.post_count=c.postCount;c.total_engagements=c.derived.engagements;c.engagement_rate=Number((c.derived.engagementRate||0).toFixed(2));c.posts_per_week=Number(c.derived.postsPerWeek.toFixed(1));for(const p of c.posts)p.engagements=p.derivedEngagements;return json(res,200,{configured:true,data})}catch(e){return json(res,200,{configured:Boolean(db.integrations.buffer.token),error:e.message})}}
  const match=url.match(/^\/api\/(transactions|marketing|newsletters)(?:\/([^/]+))?$/);if(match){const [,collection,itemId]=match;
-   if(req.method==='GET')return json(res,200,{items:db[collection]});
+   if(req.method==='GET'){const items=collection==='transactions'?[...db.transactions].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||String(b.id||'').localeCompare(String(a.id||''))):db[collection];return json(res,200,{items})}
    if(req.method==='POST'){const b=await body(req),item={...b,id:id()};db[collection].unshift(item);audit(user,`${collection}.create`,item.title||item.description);await save();return json(res,201,item)}
    if(req.method==='PUT'&&itemId){const ix=db[collection].findIndex(x=>x.id===itemId);if(ix<0)return json(res,404,{error:'Not found'});const b=await body(req);db[collection][ix]={...db[collection][ix],...b,id:itemId};audit(user,`${collection}.update`,db[collection][ix].title||db[collection][ix].description);await save();return json(res,200,db[collection][ix])}
  }
