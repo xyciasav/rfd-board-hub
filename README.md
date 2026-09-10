@@ -43,8 +43,9 @@ The named `rfd-board-hub-data` volume preserves transactions, receipts, newslett
 4. Open **Settings** beside your name and configure the Keycloak URL, realm, client ID, and optional client secret.
 5. Enable **Use Keycloak for board sign-in** and save.
 6. Before signing out, open a private browser window and verify a Keycloak username/password on the existing RFD splash page.
+7. Once Keycloak login works, set `ALLOW_BOARD_PASSWORD_LOGIN=false` in Portainer and redeploy. This removes the temporary shared-password fallback.
 
-The browser never displays the Keycloak login page. RFD Hub sends the credentials from its branded form to Keycloak's token endpoint server-side and creates an HTTP-only local session only after Keycloak approves them. This direct-grant design does not support Keycloak-hosted MFA, passkeys, external identity-provider redirects, or required-action screens. If a bad setting causes a lockout, temporarily set `AUTH_BYPASS` to `true` in Portainer, correct Settings, and immediately return it to `false`.
+The browser never displays the Keycloak login page. RFD Hub sends the credentials from its branded form to Keycloak's token endpoint server-side and creates an HTTP-only local session only after Keycloak approves them. During setup, `BOARD_PASSWORD` remains available while `ALLOW_BOARD_PASSWORD_LOGIN=true`, even if a partially configured Keycloak integration is enabled. This direct-grant design does not support Keycloak-hosted MFA, passkeys, external identity-provider redirects, or required-action screens. If a bad setting causes a lockout, temporarily set `AUTH_BYPASS` to `true` in Portainer, correct Settings, and immediately return it to `false`.
 
 ## Configure integrations
 

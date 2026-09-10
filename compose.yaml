@@ -13,6 +13,7 @@ services:
       PORT: 3000
       DATA_DIR: /app/data
       BOARD_PASSWORD: ${BOARD_PASSWORD:?Set a temporary BOARD_PASSWORD in Portainer}
+      ALLOW_BOARD_PASSWORD_LOGIN: ${ALLOW_BOARD_PASSWORD_LOGIN:-true}
       AUTH_BYPASS: ${AUTH_BYPASS:-false}
     volumes:
       - rfd-board-hub-data:/app/data
