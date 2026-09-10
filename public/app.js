@@ -1,4 +1,5 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];let state={};
+const loginMark=$('.login-card .mark');if(loginMark)loginMark.outerHTML='<img class="login-logo" src="/rfd-logo-color.png" alt="Rage for Democracy">';const sidebarMark=$('.brand .wordmark');if(sidebarMark)sidebarMark.outerHTML='<img class="brand-logo" src="/rfd-logo-white.png" alt="Rage for Democracy">';
 const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='/manifest.webmanifest';document.head.append(manifest);const mobileCss=document.createElement('link');mobileCss.rel='stylesheet';mobileCss.href='/mobile.css';document.head.append(mobileCss);
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js'));
 async function api(path,options={}){const r=await fetch(path,{headers:{'content-type':'application/json'},...options});const d=await r.json();if(r.status===401){showLogin();throw Error(d.error)}if(!r.ok)throw Error(d.error||'Request failed');return d}
