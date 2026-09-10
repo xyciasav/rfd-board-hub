@@ -1,6 +1,6 @@
 FROM node:24-alpine
 
-ARG APP_VERSION=0.6.0
+ARG APP_VERSION=0.6.1
 LABEL org.opencontainers.image.title="RFD Board Hub" \
       org.opencontainers.image.version="${APP_VERSION}" \
       org.opencontainers.image.source="https://github.com/xyciasav/rfd-board-hub"
