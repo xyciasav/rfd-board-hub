@@ -1,0 +1,7 @@
+:root{--ink:#0b0b0c;--paper:#f7f7f5;--purple:#d71920;--coral:#ef2028;--mint:#f6dddd;--line:#dededb;--muted:#606064;--shadow:0 16px 45px #00000010}
+.login{background:radial-gradient(circle at 72% 15%,#d71920 0,transparent 34%),#080808}.mark{background:#d71920;border-radius:3px;transform:rotate(-2deg)}
+.wordmark{font-weight:950;font-size:18px;line-height:.72;letter-spacing:-.08em;color:#ef2028;transform:skew(-5deg)}.wordmark small{font-size:8px;color:#fff;letter-spacing:0}
+nav button:hover,nav button.active{background:#d71920;color:#fff}.hero:after{border-color:#d7192055}.pill{background:#fae7e8;color:#b70e15}
+.settings-button{margin-left:auto;width:42px;height:42px;border-radius:50%;padding:0;font-size:19px;background:#fff;color:#111;border:1px solid var(--line)}.privacy{margin-left:0;color:#9d0c12}
+#settings-modal{width:min(650px,94vw);max-height:88vh;overflow:auto}.integration{padding:18px 0;border-top:1px solid var(--line)}.integration:first-of-type{border-top:0}.integration h3{margin:0}.integration p{margin:5px 0 12px;color:var(--muted);font-size:13px}
+.integration label,#settings-modal label{display:grid;gap:7px;font-size:12px;font-weight:700;margin:12px 0}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:540px){.field-grid{grid-template-columns:1fr}}
