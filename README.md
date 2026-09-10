@@ -27,6 +27,10 @@ Sign in and select the settings cog in the top-right corner. Add the Vikunja ser
 
 The hub is standalone: it does not call Haven or Social Cockpit. It implements the relevant event aggregation and social-insight calculations itself.
 
+### Keycloak without a redirect screen
+
+The RFD login screen can authenticate directly against Keycloak. In Integrations, enter the Keycloak URL, realm, client ID, and optional client secret, then enable **Use Keycloak for board sign-in**. The Keycloak client must have **Direct Access Grants** enabled. Test sign-in in a private browser before ending the setup session. This flow intentionally keeps the branded login screen, but Keycloak-hosted MFA, passkeys, required actions, and identity-provider redirects are unavailable in direct-grant mode. Set `AUTH_BYPASS=true` temporarily for emergency recovery if configuration causes a lockout.
+
 ## Production notes
 
 - Do not enable `AUTH_BYPASS`.
