@@ -5,6 +5,7 @@ A private, self-hosted command center for Rage for Democracy board members. The 
 - Night of the Living Loud status pulled directly from Vikunja and Eventbrite
 - A shared organizational transaction ledger
 - A marketing workspace fed by labeled Vikunja tasks, with a shared print-file library and PDF generation
+- A collaborative Substack desk with topic buckets, rich-text drafts, editorial status, and copy-ready output
 - Buffer performance insights calculated directly in the hub
 - A collaborative Substack issue handoff desk
 - A board activity trail
