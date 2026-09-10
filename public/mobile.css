@@ -1,7 +1,7 @@
 .wordmark{display:none}.brand-logo{width:88px;height:auto;object-fit:contain}.login-logo{width:125px;height:auto;display:block;float:right;margin:-8px -5px 10px 16px}
 .settings-nav{margin-top:18px!important;border-top:1px solid #ffffff20!important;border-radius:0!important;padding-top:18px!important}
 @media(max-width:850px){main{padding-bottom:calc(30px + env(safe-area-inset-bottom));padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}header{position:sticky;top:0;z-index:5;background:#f7f7f5f2;padding:10px 0}.settings-button{display:grid;place-items:center}.page>.section-head h2{font-size:29px}}
-.table-action{padding:6px 10px;font-size:12px;background:#111}#transactions-table{overflow-x:auto}#transactions-table a{color:#b70e15;font-weight:700}.muted{font-weight:400}
+.table-action{padding:6px 10px;font-size:12px;background:#111}.row-actions{display:flex;gap:6px}.table-action.danger{background:#fff;color:#b70e15;border:1px solid #e2b6b8}#transactions-table{overflow-x:auto}#transactions-table a{color:#b70e15;font-weight:700}.muted{font-weight:400}
 .button-group{display:flex;gap:8px;flex-wrap:wrap}.button-group .secondary{border:1px solid var(--line)}
 .app-version{display:block;color:#8f91a4;font-size:10px;letter-spacing:.08em;margin-bottom:8px}.login-version{color:var(--muted);text-align:center;margin:16px 0 0}
 .event-tabs{margin-left:auto}.event-tabs button{background:#111;color:#fff}.event-tabs button.active{box-shadow:inset 0 -3px #ef2028}@media(max-width:620px){#page-living>.section-head{align-items:flex-start;flex-wrap:wrap}.event-tabs{width:100%;margin:0}.event-tabs button{width:100%;text-align:left}}

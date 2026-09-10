@@ -1,11 +1,11 @@
 import http from 'node:http';
-import {readFile, writeFile, mkdir} from 'node:fs/promises';
+import {readFile, writeFile, mkdir, unlink} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import {join, extname} from 'node:path';
 import {randomBytes, timingSafeEqual, scryptSync} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
-const APP_VERSION=process.env.APP_VERSION||'0.6.1',PORT=Number(process.env.PORT||4380), ROOT=fileURLToPath(new URL('.',import.meta.url)), PUBLIC=join(ROOT,'public'), DATA=process.env.DATA_DIR||join(ROOT,'data'), DB=join(DATA,'hub.json');
+const APP_VERSION=process.env.APP_VERSION||'0.6.2',PORT=Number(process.env.PORT||4380), ROOT=fileURLToPath(new URL('.',import.meta.url)), PUBLIC=join(ROOT,'public'), DATA=process.env.DATA_DIR||join(ROOT,'data'), DB=join(DATA,'hub.json');
 const sessions=new Map(),pdfJobs=new Map(),maxBody=30_000_000;
 const seed={transactions:[],marketing:[{id:'welcome',title:'Build the fall campaign calendar',owner:'Communications',status:'In progress',due:'',channel:'All channels'}],newsletters:[{id:'first-issue',title:'Next RFD newsletter',status:'Outline',writer:'',due:'',sections:[{id:'opening',title:'Opening note',notes:'Why this moment matters',status:'Drafting'},{id:'action',title:'Action items',notes:'Events, volunteer asks, and links',status:'Needs input'}]}],integrations:{vikunja:{url:'',token:'',project:'Night of the Living Loud'},eventbrite:{eventId:'',token:''},buffer:{token:'',facebookChannel:'',instagramChannel:''}},eventMetrics:{sponsorsCommitted:0,revenueCommitted:0},activity:[]};
 let db=await load();
@@ -67,6 +67,7 @@ async function api(req,res,url){
    if(req.method==='GET'){const items=collection==='transactions'?[...db.transactions].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||String(b.id||'').localeCompare(String(a.id||''))):db[collection];return json(res,200,{items})}
    if(req.method==='POST'){const b=await body(req),item={...b,id:id()};db[collection].unshift(item);audit(user,`${collection}.create`,item.title||item.description);await save();return json(res,201,item)}
    if(req.method==='PUT'&&itemId){const ix=db[collection].findIndex(x=>x.id===itemId);if(ix<0)return json(res,404,{error:'Not found'});const b=await body(req);db[collection][ix]={...db[collection][ix],...b,id:itemId};audit(user,`${collection}.update`,db[collection][ix].title||db[collection][ix].description);await save();return json(res,200,db[collection][ix])}
+   if(req.method==='DELETE'&&itemId){const ix=db[collection].findIndex(x=>x.id===itemId);if(ix<0)return json(res,404,{error:'Not found'});const [removed]=db[collection].splice(ix,1);if(collection==='transactions'&&removed.receipt?.stored)await unlink(join(DATA,'receipts',removed.receipt.stored)).catch(()=>{});audit(user,`${collection}.delete`,removed.title||removed.description);await save();return json(res,200,{ok:true})}
  }
  return json(res,404,{error:'Not found'});
 }
