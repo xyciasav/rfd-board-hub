@@ -1,9 +1,15 @@
 FROM node:24-alpine
 
+ARG APP_VERSION=0.2.0
+LABEL org.opencontainers.image.title="RFD Board Hub" \
+      org.opencontainers.image.version="${APP_VERSION}" \
+      org.opencontainers.image.source="https://github.com/xyciasav/rfd-board-hub"
+
 WORKDIR /app
 ENV NODE_ENV=production \
     PORT=3000 \
-    DATA_DIR=/app/data
+    DATA_DIR=/app/data \
+    APP_VERSION=${APP_VERSION}
 
 COPY --chown=node:node package.json ./
 COPY --chown=node:node server.js ./

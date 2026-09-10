@@ -3,7 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: rfd-board-hub:latest
+      args:
+        APP_VERSION: ${RFD_HUB_VERSION:-0.2.0}
+    image: rfd-board-hub:${RFD_HUB_VERSION:-0.2.0}
     container_name: rfd-board-hub
     restart: unless-stopped
     ports:
@@ -12,6 +14,7 @@ services:
       NODE_ENV: production
       PORT: 3000
       DATA_DIR: /app/data
+      APP_VERSION: ${RFD_HUB_VERSION:-0.2.0}
       BOARD_PASSWORD: ${BOARD_PASSWORD:?Set a temporary BOARD_PASSWORD in Portainer}
       ALLOW_BOARD_PASSWORD_LOGIN: ${ALLOW_BOARD_PASSWORD_LOGIN:-true}
       AUTH_BYPASS: ${AUTH_BYPASS:-false}
