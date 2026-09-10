@@ -36,7 +36,7 @@ The repository includes a production `Dockerfile` and [compose.yaml](compose.yam
 
 The named `rfd-board-hub-data` volume preserves transactions, receipts, newsletter work, marketing work, targets, and integration settings across container upgrades. Put the service behind an HTTPS reverse proxy before exposing it outside the local network.
 
-The Portainer stack pulls `ghcr.io/xyciasav/rfd-board-hub:latest`. Refresh the Git-backed stack with **Re-pull image** enabled to deploy an update; no Compose edits or version variables are required. Keep the same Portainer stack and named volume so container replacement continues using the existing board data.
+The Portainer stack pins an explicit image tag such as `ghcr.io/xyciasav/rfd-board-hub:0.6.4`, so the deployed version is visible in Portainer. Each release updates this tag in the Git repository. Refresh the existing Git-backed stack with **Re-pull image** enabled; no manual Compose edits or version variables are required. Keep the same Portainer stack and named volume so container replacement continues using the existing board data.
 
 Set `PDF_GENERATOR_URL` to the base URL of the donation-letter generator service to enable the Marketing PDF form. Marketing work is pulled from the `Night of the Living Loud` and `Rage for Democracy` Vikunja projects when a task has a label containing `marketing` or `advertising`.
 
