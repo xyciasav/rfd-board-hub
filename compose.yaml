@@ -1,0 +1,29 @@
+services:
+  rfd-board-hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rfd-board-hub:latest
+    container_name: rfd-board-hub
+    restart: unless-stopped
+    ports:
+      - "${RFD_HUB_PORT:-4380}:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATA_DIR: /app/data
+      BOARD_PASSWORD: ${BOARD_PASSWORD:?Set a temporary BOARD_PASSWORD in Portainer}
+      AUTH_BYPASS: ${AUTH_BYPASS:-false}
+    volumes:
+      - rfd-board-hub-data:/app/data
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  rfd-board-hub-data:

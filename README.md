@@ -21,6 +21,31 @@ npm start
 
 Open `http://localhost:4380`. Data is stored in `data/hub.json` and should be mounted as a persistent Docker volume in production.
 
+## Deploy with Portainer
+
+The repository includes a production `Dockerfile` and [compose.yaml](compose.yaml). In Portainer:
+
+1. Open **Stacks** and choose **Add stack**.
+2. Select **Repository**.
+3. Use `https://github.com/xyciasav/rfd-board-hub` as the repository URL.
+4. Set the compose path to `compose.yaml`.
+5. Add a stack environment variable named `BOARD_PASSWORD` with a strong temporary bootstrap password.
+6. Optionally set `RFD_HUB_PORT`; it defaults to `4380`.
+7. Deploy the stack and open `http://YOUR-SERVER:4380`.
+
+The named `rfd-board-hub-data` volume preserves transactions, receipts, newsletter work, marketing work, targets, and integration settings across container upgrades. Put the service behind an HTTPS reverse proxy before exposing it outside the local network.
+
+### Switch the splash-page login to Keycloak
+
+1. In Keycloak, create an OpenID Connect client such as `rfd-board-hub`.
+2. Enable **Direct Access Grants**. Use a public client, or copy the client secret when using a confidential client.
+3. Sign into RFD Hub with the temporary `BOARD_PASSWORD`.
+4. Open **Settings** beside your name and configure the Keycloak URL, realm, client ID, and optional client secret.
+5. Enable **Use Keycloak for board sign-in** and save.
+6. Before signing out, open a private browser window and verify a Keycloak username/password on the existing RFD splash page.
+
+The browser never displays the Keycloak login page. RFD Hub sends the credentials from its branded form to Keycloak's token endpoint server-side and creates an HTTP-only local session only after Keycloak approves them. This direct-grant design does not support Keycloak-hosted MFA, passkeys, external identity-provider redirects, or required-action screens. If a bad setting causes a lockout, temporarily set `AUTH_BYPASS` to `true` in Portainer, correct Settings, and immediately return it to `false`.
+
 ## Configure integrations
 
 Sign in and select the settings cog in the top-right corner. Add the Vikunja server/token/project, Eventbrite event ID/token, and Buffer API key there. Secrets are stored only in the server data file and are masked whenever settings are returned to the browser.
