@@ -38,6 +38,8 @@ The named `rfd-board-hub-data` volume preserves transactions, receipts, newslett
 
 Set `PDF_GENERATOR_URL` to the base URL of the donation-letter generator service to enable the Marketing PDF form. Marketing work is pulled from the `Night of the Living Loud` and `Rage for Democracy` Vikunja projects when a task has a label containing `marketing` or `advertising`.
 
+Set `RFD_WRITER_URL` to the OpenAI-compatible Rage assistant API (normally `http://10.0.0.230:8085/v1`) and `RFD_WRITER_MODEL` to `rage-assistant`. The Hub asks that model to turn the form notes into a finished letter before sending it to the PDF renderer. `RFD_WRITER_TOKEN` is optional when the local API has no authentication.
+
 Each release uses a versioned Docker tag such as `rfd-board-hub:0.3.0`. The same version appears on the login screen, beside the signed-in account controls, in `/health`, and in `/api/session`, making it clear whether Portainer is actually running the latest build.
 
 ### Switch the splash-page login to Keycloak
