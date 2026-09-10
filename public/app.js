@@ -1,5 +1,6 @@
 import {renderInsightsPage} from './insights-rich.js';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];let state={};
+const usernameLabel=$('#login-form label');usernameLabel.childNodes[0].textContent='Username';const usernameInput=$('#login-form [name="name"]');usernameInput.autocomplete='username';usernameInput.autocapitalize='none';usernameInput.spellcheck=false;
 const loginMark=$('.login-card .mark');if(loginMark)loginMark.outerHTML='<img class="login-logo" src="/rfd-logo-color.png" alt="Rage for Democracy">';const sidebarMark=$('.brand .wordmark');if(sidebarMark)sidebarMark.outerHTML='<img class="brand-logo" src="/rfd-logo-white.png" alt="Rage for Democracy">';
 const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='/manifest.webmanifest';document.head.append(manifest);for(const href of ['/mobile.css','/insights-rich.css']){const link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.append(link)}
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js'));

@@ -30,12 +30,12 @@ The repository includes a production `Dockerfile` and [compose.yaml](compose.yam
 3. Use `https://github.com/xyciasav/rfd-board-hub` as the repository URL.
 4. Set the compose path to `compose.yaml`.
 5. Add a stack environment variable named `BOARD_PASSWORD` with a strong temporary bootstrap password.
-6. Optionally set `RFD_HUB_PORT`; it defaults to `4380`. `RFD_HUB_VERSION` defaults to the current release, `0.2.0`.
+6. Optionally set `RFD_HUB_PORT`; it defaults to `4380`. `RFD_HUB_VERSION` defaults to the current release, `0.2.1`.
 7. Deploy the stack and open `http://YOUR-SERVER:4380`.
 
 The named `rfd-board-hub-data` volume preserves transactions, receipts, newsletter work, marketing work, targets, and integration settings across container upgrades. Put the service behind an HTTPS reverse proxy before exposing it outside the local network.
 
-Each release uses a versioned Docker tag such as `rfd-board-hub:0.2.0`. The same version appears on the login screen, beside the signed-in account controls, in `/health`, and in `/api/session`, making it clear whether Portainer is actually running the latest build.
+Each release uses a versioned Docker tag such as `rfd-board-hub:0.2.1`. The same version appears on the login screen, beside the signed-in account controls, in `/health`, and in `/api/session`, making it clear whether Portainer is actually running the latest build.
 
 ### Switch the splash-page login to Keycloak
 
