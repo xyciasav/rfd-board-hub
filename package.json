@@ -1,6 +1,6 @@
 {
   "name": "rfd-board-hub",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "private": true,
   "type": "module",
   "scripts": {"start": "node server.js", "check": "node --check server.js && node --check public/app.js && node --check public/insights-wrapper.js && node --check public/marketing-workspace.js && node --check public/newsletter-editor.js && node --check public/finance-workspace.js", "test": "node --test", "verify": "npm run check && npm test"},
