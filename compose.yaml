@@ -1,6 +1,6 @@
 services:
   rfd-board-hub:
-    image: ghcr.io/xyciasav/rfd-board-hub:1.5.0
+    image: ghcr.io/xyciasav/rfd-board-hub:1.6.0
     container_name: rfd-board-hub
     restart: unless-stopped
     ports:
