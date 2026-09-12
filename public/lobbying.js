@@ -3,6 +3,7 @@ const links=value=>String(value||'').split(/\r?\n/).map(x=>x.trim()).filter(x=>/
 const fileData=file=>new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not read the document'));reader.readAsDataURL(file)});
 const size=value=>value>1e6?`${(value/1e6).toFixed(1)} MB`:`${Math.ceil(value/1000)} KB`;
 const metric=(label,value)=>`<div class="metric"><span>${label}</span><b>${value}</b></div>`;
+import {confirmDialog} from './ui-dialog.js';
 
 export async function renderLobbying(context){
  const {api,esc,date}=context,root=document.querySelector('#lobbying-content');
@@ -14,10 +15,10 @@ export async function renderLobbying(context){
  root.querySelector('#lobbying-year').onchange=event=>{root.dataset.year=event.target.value;renderLobbying(context)};
  root.querySelector('#add-lobbying').onclick=()=>openLobbying(null,context);
  root.querySelectorAll('[data-edit-lobbying]').forEach(button=>button.onclick=()=>openLobbying(items.find(x=>x.id===button.dataset.editLobbying),context));
- root.querySelectorAll('[data-delete-lobbying]').forEach(button=>button.onclick=async()=>{const item=items.find(x=>x.id===button.dataset.deleteLobbying);if(confirm(`Delete lobbying record “${item.activity}” and its documents?`)){await api(`/api/lobbying/${item.id}`,{method:'DELETE'});await renderLobbying(context)}});
+ root.querySelectorAll('[data-delete-lobbying]').forEach(button=>button.onclick=async()=>{const item=items.find(x=>x.id===button.dataset.deleteLobbying);if(await confirmDialog({title:'Delete lobbying record?',message:`“${item.activity}” and all attached documents will be permanently removed.`,confirmLabel:'Delete record',danger:true})){await api(`/api/lobbying/${item.id}`,{method:'DELETE'});await renderLobbying(context)}});
 }
 
-const lobbyingRow=(item,{esc,date})=>`<div class="lobbying-row"><div><b>${esc(item.activity)}</b><small>${date(item.date)} · ${esc(item.name)} · ${minutesLabel(item.minutes)} · ${(item.documents||[]).length} document${(item.documents||[]).length===1?'':'s'}</small>${item.notes?`<p>${esc(item.notes)}</p>`:''}<div class="published-links">${links(item.publishedLinks).map((link,index)=>`<a href="${esc(link)}" target="_blank" rel="noopener">Published link ${index+1}</a>`).join('')}</div></div><div class="row-actions"><button class="table-action" data-edit-lobbying="${item.id}">Open</button><button class="table-action danger" data-delete-lobbying="${item.id}">Delete</button></div></div>`;
+const lobbyingRow=(item,{esc,date})=>`<div class="lobbying-row"><div><b>${esc(item.activity)}</b><small>${date(item.date)} · ${esc(item.name)} · ${minutesLabel(item.minutes)} · ${(item.documents||[]).length} document${(item.documents||[]).length===1?'':'s'}</small>${item.notes?`<p>${esc(item.notes)}</p>`:''}<div class="published-links">${links(item.publishedLinks).map((link,index)=>`<a href="${esc(link)}" target="_blank" rel="noopener">Published link ${index+1}</a>`).join('')}${(item.documents||[]).map((doc,index)=>`<a href="/api/lobbying/${item.id}/documents/${doc.id}/view" target="_blank" rel="noopener">View ${esc(doc.name||`document ${index+1}`)}</a>`).join('')}</div></div><div class="row-actions"><button class="table-action" data-edit-lobbying="${item.id}">Open</button><button class="table-action danger" data-delete-lobbying="${item.id}">Delete</button></div></div>`;
 
 function openLobbying(item,context){
  const dialog=document.createElement('dialog');dialog.className='finance-dialog lobbying-dialog';
@@ -30,5 +31,5 @@ const documentsMarkup=(item,esc)=>`<section class="meeting-documents"><div class
 
 function wireDocuments(dialog,item,context){
  dialog.querySelector('#upload-lobbying-file').onclick=async()=>{const file=dialog.querySelector('#lobbying-file').files[0],error=dialog.querySelector('.upload-error'),button=dialog.querySelector('#upload-lobbying-file');error.textContent='';if(!file){error.textContent='Choose a document first.';return}if(file.size>2e7){error.textContent='Document must be 20 MB or smaller.';return}button.disabled=true;try{await context.api(`/api/lobbying/${item.id}/documents`,{method:'POST',body:JSON.stringify({name:file.name,mime:file.type,data:await fileData(file)})});dialog.remove();await renderLobbying(context)}catch(x){error.textContent=x.message;button.disabled=false}};
- dialog.querySelectorAll('[data-delete-lobbying-document]').forEach(button=>button.onclick=async()=>{const doc=item.documents.find(x=>x.id===button.dataset.deleteLobbyingDocument);if(confirm(`Delete “${doc.name}”?`)){await context.api(`/api/lobbying/${item.id}/documents/${doc.id}`,{method:'DELETE'});dialog.remove();await renderLobbying(context)}});
+ dialog.querySelectorAll('[data-delete-lobbying-document]').forEach(button=>button.onclick=async()=>{const doc=item.documents.find(x=>x.id===button.dataset.deleteLobbyingDocument);if(await confirmDialog({title:'Delete supporting document?',message:`“${doc.name}” will be permanently removed.`,confirmLabel:'Delete document',danger:true})){await context.api(`/api/lobbying/${item.id}/documents/${doc.id}`,{method:'DELETE'});dialog.remove();await renderLobbying(context)}});
 }
