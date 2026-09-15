@@ -62,6 +62,24 @@ Sign in and select **Settings** beside the account controls. Add the shared Viku
 
 The hub is standalone: it does not call Haven or Social Cockpit. It implements the relevant event aggregation and social-insight calculations itself.
 
+### Website Join Now intake
+
+The public website can send completed Join Now forms into the Hub with a server-to-server request:
+
+```http
+POST https://hub.ragefordemocracy.com/api/website-signups
+Authorization: Bearer YOUR_SHARED_TOKEN
+Content-Type: application/json
+```
+
+```json
+{"firstName":"Jane","lastName":"Member","email":"jane@example.com","phone":"925-555-0100","postalCode":"94513","volunteer":true,"updates":true,"consent":true,"interests":"Civic education"}
+```
+
+In Portainer, set `WEBSITE_SIGNUP_TOKEN` to a random secret of at least 32 characters. Configure the same secret only in the website's server-side environment; never include it in browser JavaScript. The website backend should proxy the Join Now submission to this endpoint. Set `WEBSITE_SIGNUP_ORIGINS` to a comma-separated list of permitted website origins if they differ from the default `https://ragefordemocracy.com,https://www.ragefordemocracy.com`.
+
+The endpoint validates names, email, phone, ZIP code, consent, and interests. A repeated email updates the existing contact instead of creating a duplicate. Imported contacts appear in **Sign Up Mode → Signup list** and its CSV export with `Website` as their source.
+
 ### Keycloak without a redirect screen
 
 The RFD login screen can authenticate directly against Keycloak. In Integrations, enter the Keycloak URL, realm, client ID, and optional client secret, then enable **Use Keycloak for board sign-in**. The Keycloak client must have **Direct Access Grants** enabled. Test sign-in in a private browser before ending the setup session. This flow intentionally keeps the branded login screen, but Keycloak-hosted MFA, passkeys, required actions, and identity-provider redirects are unavailable in direct-grant mode. Set `AUTH_BYPASS=true` temporarily for emergency recovery if configuration causes a lockout.

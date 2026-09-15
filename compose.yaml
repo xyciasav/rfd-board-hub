@@ -1,12 +1,14 @@
 services:
   rfd-board-hub:
-    image: ghcr.io/xyciasav/rfd-board-hub:1.8.3
+    image: ghcr.io/xyciasav/rfd-board-hub:1.9.0
     container_name: rfd-board-hub
     restart: unless-stopped
     ports:
       - "${RFD_HUB_PORT:-4380}:3000"
     environment:
       NODE_ENV: production
+      WEBSITE_SIGNUP_TOKEN: ${WEBSITE_SIGNUP_TOKEN:-}
+      WEBSITE_SIGNUP_ORIGINS: ${WEBSITE_SIGNUP_ORIGINS:-https://ragefordemocracy.com,https://www.ragefordemocracy.com}
       PORT: 3000
       DATA_DIR: /app/data
       BOARD_PASSWORD: ${BOARD_PASSWORD:?Set a temporary BOARD_PASSWORD in Portainer}
