@@ -17,14 +17,14 @@ export async function renderWebsite({api,esc}) {
  if(!document.querySelector('link[data-page-editor]')){const css=document.createElement('link');css.rel='stylesheet';css.href='/website-page-editor.css';css.dataset.pageEditor='true';document.head.append(css);}
  const response=await fetch('/website-layout.json');if(!response.ok)throw Error('Website page layout could not be loaded.');
  const layout=await response.json();let state=await api('/api/website-content'),active=layout.pages[0],busy=false;
- let site='';try{site=localStorage.getItem('rfd-public-website-url')||'';}catch{}
+ let site=layout.previewOrigin||'';try{site=localStorage.getItem('rfd-public-website-url')||site;}catch{}
  const canEdit=document.body.dataset.canEdit==='true',admin=document.body.dataset.role==='admin';
  const dirty=()=>JSON.stringify(state.draft)!==JSON.stringify(state.published);
- const imageURL=value=>{try{return new URL(value,value?.startsWith('/api/')?HUB:site||HUB).href;}catch{return '';}};
+ const imageURL=value=>{try{const result=new URL(value,value?.startsWith('/api/')?HUB:site||HUB);return ['https:','http:'].includes(result.protocol)?result.href:'';}catch{return '';}};
  const isImage=value=>/\.(png|jpe?g|webp)(?:[?#]|$)/i.test(value||'');
  const itemFor=block=>state.draft[block.section].find(x=>x.id===block.key)||structuredClone(block.default);
  const members=block=>sorted(state.draft[block.section].filter(x=>block.section!=='photos'||(block.filter==='Calendar'?x.date==='Calendar':x.date!=='Calendar')));
- const thumb=item=>item?.image&&isImage(item.image)?`<img src="${esc(imageURL(item.image))}" alt="" loading="lazy">`:'<span class="wpe-placeholder" aria-hidden="true">Aa</span>';
+ const thumb=item=>item?.image&&isImage(item.image)&&(!item.image.startsWith('/assets/')||site)?`<img src="${esc(imageURL(item.image))}" alt="" loading="lazy">`:`<span class="wpe-placeholder" aria-hidden="true">${item?.image?'Image':'Aa'}</span>`;
  async function save(){state=await api('/api/website-content/draft',{method:'PUT',body:JSON.stringify({content:state.draft})});}
  function upsert(section,item){const found=state.draft[section].some(x=>x.id===item.id);state.draft[section]=found?state.draft[section].map(x=>x.id===item.id?item:x):[...state.draft[section],item];}
  async function transaction(change){if(busy)return;busy=true;const before=structuredClone(state);try{change();await save();render();}catch(error){state=before;await messageDialog({title:'Could not save draft',message:error.message});}finally{busy=false;}}
@@ -58,13 +58,14 @@ export async function renderWebsite({api,esc}) {
   document.body.append(dialog);dialog.querySelectorAll('[data-cancel]').forEach(x=>x.onclick=()=>dialog.close());dialog.addEventListener('close',()=>dialog.remove());
   dialog.querySelector('form').onsubmit=async event=>{event.preventDefault();const form=event.currentTarget,submit=form.querySelector('.wpe-actions button:last-child');submit.disabled=true;const before=structuredClone(state);try{const values=Object.fromEntries(new FormData(form));delete values.asset;const value={...item,...values,visible:form.elements.visible.checked};if(form.elements.showPopup)value.showPopup=form.elements.showPopup.checked;
    if(block?.kind==='video'&&!youtube(value.link))throw Error('Use a YouTube watch, share, Shorts, or embed URL.');
+   for(const field of formFields.filter(x=>x.type==='url'))if(value[field.name]){const target=new URL(value[field.name]);if(!['http:','https:'].includes(target.protocol))throw Error('Links must start with http:// or https://.');}
    if(block?.kind==='calendar'){const url=new URL(value.link);if(url.protocol!=='https:'||!['www.google.com','calendar.google.com'].includes(url.hostname)||!url.pathname.endsWith('/calendar/embed'))throw Error('Paste the HTTPS Google Calendar embed URL.');}
    const file=form.elements.asset?.files[0];if(file){if(file.size>20_000_000)throw Error('Choose a file smaller than 20 MB.');value.image=(await api('/api/website-content/assets',{method:'POST',body:JSON.stringify({name:file.name,mime:file.type,data:await fileData(file)})})).url;}
    upsert(section,value);await save();dialog.close();render();
   }catch(error){state=before;form.querySelector('.error').textContent=error.message;submit.disabled=false;}};
   dialog.showModal();
  }
- function youtube(value){try{const u=new URL(value);if(!['www.youtube.com','youtube.com','youtu.be','www.youtube-nocookie.com'].includes(u.hostname))return '';const id=u.hostname==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v')||u.pathname.split('/')[2];return /^[\w-]{11}$/.test(id)?id:'';}catch{return '';}}
+ function youtube(value){try{const u=new URL(value);if(u.protocol!=='https:'||!['www.youtube.com','youtube.com','youtu.be','www.youtube-nocookie.com'].includes(u.hostname))return '';const id=u.hostname==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v')||u.pathname.split('/')[2];return /^[\w-]{11}$/.test(id)?id:'';}catch{return '';}}
  function preview(){
   if(!site){configure();return;}
   if(location.protocol==='https:'&&site.startsWith('http:')){

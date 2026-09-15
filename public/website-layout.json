@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "previewOrigin": "http://10.0.0.230:4390",
   "pages": [
     {
       "file": "index.html",
