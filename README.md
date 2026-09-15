@@ -80,6 +80,18 @@ In Portainer, set `WEBSITE_SIGNUP_TOKEN` to a random secret of at least 32 chara
 
 The endpoint validates names, email, phone, ZIP code, consent, and interests. A repeated email updates the existing contact instead of creating a duplicate. Imported contacts appear in **Sign Up Mode → Signup list** and its CSV export with `Website` as their source.
 
+### Public website content
+
+Board editors can maintain Events, Pages, Civics resources, Supporters, and Photos from the Hub's **Website** section. Changes remain drafts until an administrator publishes them. The editor includes a draft preview, keeps the ten most recent published versions, and can restore an older version back into the draft for review.
+
+The public website should read the current published version from:
+
+```http
+GET https://hub.ragefordemocracy.com/api/public/website-content
+```
+
+This endpoint is intentionally public and read-only because it contains content already approved for the public website. Uploaded website assets use public URLs returned by the Hub. The public website should render only the fields it recognizes; this keeps layout and code changes in the website project while allowing routine content changes from the Hub.
+
 ### Keycloak without a redirect screen
 
 The RFD login screen can authenticate directly against Keycloak. In Integrations, enter the Keycloak URL, realm, client ID, and optional client secret, then enable **Use Keycloak for board sign-in**. The Keycloak client must have **Direct Access Grants** enabled. Test sign-in in a private browser before ending the setup session. This flow intentionally keeps the branded login screen, but Keycloak-hosted MFA, passkeys, required actions, and identity-provider redirects are unavailable in direct-grant mode. Set `AUTH_BYPASS=true` temporarily for emergency recovery if configuration causes a lockout.
