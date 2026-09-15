@@ -1,6 +1,6 @@
 FROM node:24-alpine
 
-ARG APP_VERSION=1.10.0
+ARG APP_VERSION=1.10.1
 LABEL org.opencontainers.image.title="RFD Board Hub" \
       org.opencontainers.image.version="${APP_VERSION}" \
       org.opencontainers.image.source="https://github.com/xyciasav/rfd-board-hub"
@@ -13,6 +13,7 @@ ENV NODE_ENV=production \
 
 COPY --chown=node:node package.json ./
 COPY --chown=node:node server.js ./
+COPY --chown=node:node website-intake.js website-content.js ./
 COPY --chown=node:node public ./public
 RUN mkdir -p /app/data && chown node:node /app/data
 
