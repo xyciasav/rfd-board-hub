@@ -13,5 +13,5 @@ test('website content keeps drafts private until an administrator publishes',asy
  res=response();await cms.publicRoute(request(),res,'/api/public/website-content');assert.equal(JSON.parse(res.payload).content.events.length,0);
  res=response();await cms.manage(request(null,'POST'),res,'/api/website-content/publish',editor);assert.equal(res.status,403);
  res=response();await cms.manage(request(null,'POST'),res,'/api/website-content/publish',admin);assert.equal(res.status,200);
- res=response();await cms.publicRoute(request(),res,'/api/public/website-content');assert.equal(JSON.parse(res.payload).content.events[0].title,'Living Loud');
+ res=response();await cms.publicRoute(request(),res,'/api/public/website-content');const published=JSON.parse(res.payload).content.events[0];assert.equal(published.title,'Living Loud');assert.equal(published.date,'2026-10-30T12:00:00');assert.equal(published.dateValue,'2026-10-30');
 });

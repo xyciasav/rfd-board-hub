@@ -1,0 +1,835 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "file": "index.html",
+      "title": "Home",
+      "blocks": [
+        {
+          "key": "e22adf18d8366110",
+          "section": "pages",
+          "label": "Our core values",
+          "kind": "image",
+          "default": {
+            "id": "e22adf18d8366110",
+            "title": "Our core values",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/index.html#95ad90c5",
+            "image": "/assets/core-values.webp",
+            "date": "",
+            "visible": true,
+            "order": 50
+          },
+          "binding": {
+            "id": "e22adf18d8366110",
+            "key": "https://www.ragefordemocracy.com/index.html#95ad90c5",
+            "file": "index.html",
+            "selector": ".artwork-wrap",
+            "fields": {
+              "image": "img"
+            }
+          },
+          "fields": [
+            {
+              "name": "image",
+              "label": "Image or PDF",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "key": "398f55b15f08fd69",
+          "section": "pages",
+          "label": "Community section introduction",
+          "kind": "text",
+          "default": {
+            "id": "398f55b15f08fd69",
+            "title": "Good work.\nReal connection.",
+            "subtitle": "PEOPLE MAKE THE DIFFERENCE",
+            "body": "A place to gather, create, connect, and belong.",
+            "link": "",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "textarea"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Introduction",
+              "type": "textarea"
+            }
+          ],
+          "binding": {
+            "id": "398f55b15f08fd69",
+            "file": "index.html",
+            "selector": "#community .section-heading",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": ":scope > p"
+            }
+          }
+        },
+        {
+          "key": "photos-index.html",
+          "section": "photos",
+          "label": "Community photos",
+          "kind": "collection",
+          "filter": "Home"
+        },
+        {
+          "key": "events-index.html",
+          "section": "events",
+          "label": "Featured event and popup",
+          "kind": "collection"
+        }
+      ]
+    },
+    {
+      "file": "calendar.html",
+      "title": "Calendar",
+      "blocks": [
+        {
+          "key": "89ca2983f5602ce5",
+          "section": "pages",
+          "label": "Page introduction",
+          "kind": "text",
+          "default": {
+            "id": "89ca2983f5602ce5",
+            "title": "Calendar",
+            "subtitle": "COME TOGETHER",
+            "body": "Find your next RFD event.",
+            "link": "https://www.ragefordemocracy.com/calendar.html#2d5a01fd",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "binding": {
+            "id": "89ca2983f5602ce5",
+            "key": "https://www.ragefordemocracy.com/calendar.html#2d5a01fd",
+            "file": "calendar.html",
+            "selector": ".page-heading",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": "p:not(.eyebrow)"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading above the title",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "photos-calendar.html",
+          "section": "photos",
+          "label": "Monthly schedule artwork",
+          "kind": "collection",
+          "filter": "Calendar"
+        },
+        {
+          "key": "events-calendar.html",
+          "section": "events",
+          "label": "Event listings",
+          "kind": "collection"
+        },
+        {
+          "key": "2b5c98e5d1eb2330",
+          "section": "pages",
+          "label": "Google Calendar",
+          "kind": "calendar",
+          "default": {
+            "id": "2b5c98e5d1eb2330",
+            "title": "Rage for Democracy Events calendar",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.google.com/calendar/embed?src=c_90605352a481873281c58c8186a7a03f4739a550dbe644850b71acb3eaa03a7f%40group.calendar.google.com&ctz=America%2FLos_Angeles",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Accessible calendar title",
+              "type": "text"
+            },
+            {
+              "name": "link",
+              "label": "Google Calendar embed URL",
+              "type": "url"
+            }
+          ],
+          "binding": null
+        }
+      ]
+    },
+    {
+      "file": "citizen-civics-club.html",
+      "title": "Citizen Civics Club",
+      "blocks": [
+        {
+          "key": "5ea412b2b65da734",
+          "section": "pages",
+          "label": "Page introduction",
+          "kind": "text",
+          "default": {
+            "id": "5ea412b2b65da734",
+            "title": "Citizen Civics Club",
+            "subtitle": "EDUCATION",
+            "body": "We help people understand their rights, government, and how to take part.",
+            "link": "https://www.ragefordemocracy.com/citizen-civics-club.html#2d5a01fd",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 10
+          },
+          "binding": {
+            "id": "5ea412b2b65da734",
+            "key": "https://www.ragefordemocracy.com/citizen-civics-club.html#2d5a01fd",
+            "file": "citizen-civics-club.html",
+            "selector": ".page-heading",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": "p:not(.eyebrow)"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading above the title",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "civics-citizen-civics-club.html",
+          "section": "civics",
+          "label": "Handouts and learning resources",
+          "kind": "collection"
+        },
+        {
+          "key": "4b3dc51eee05ea43",
+          "section": "pages",
+          "label": "Club video",
+          "kind": "video",
+          "default": {
+            "id": "4b3dc51eee05ea43",
+            "title": "Club video",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.youtube.com/watch?v=QjjgsxtDp6I",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Video heading",
+              "type": "text"
+            },
+            {
+              "name": "link",
+              "label": "YouTube video URL",
+              "type": "url"
+            }
+          ],
+          "binding": null
+        }
+      ]
+    },
+    {
+      "file": "Night-of-the-Living-Loud.html",
+      "title": "Night of the Living Loud",
+      "blocks": [
+        {
+          "key": "cba77efd5503427f",
+          "section": "pages",
+          "label": "Page introduction",
+          "kind": "text",
+          "default": {
+            "id": "cba77efd5503427f",
+            "title": "Night of the\nLiving Loud",
+            "subtitle": "RAGE FOR DEMOCRACY PRESENTS",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#2d5a01fd",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 30
+          },
+          "binding": {
+            "id": "cba77efd5503427f",
+            "key": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#2d5a01fd",
+            "file": "Night-of-the-Living-Loud.html",
+            "selector": ".page-heading",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": "p:not(.eyebrow)"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading above the title",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "events-Night-of-the-Living-Loud.html",
+          "section": "events",
+          "label": "Concert details, flyer and popup",
+          "kind": "collection"
+        },
+        {
+          "key": "fabe8374d4d5fa70",
+          "section": "pages",
+          "label": "Become a sponsor — original concert sponsorship flyer",
+          "kind": "image",
+          "default": {
+            "id": "fabe8374d4d5fa70",
+            "title": "Become a sponsor — original concert sponsorship flyer",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#d8f4783d",
+            "image": "/assets/sponsor-flyer.webp",
+            "date": "",
+            "visible": true,
+            "order": 100
+          },
+          "binding": {
+            "id": "fabe8374d4d5fa70",
+            "key": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#d8f4783d",
+            "file": "Night-of-the-Living-Loud.html",
+            "selector": "img[src=\"/assets/sponsor-flyer.webp\"]",
+            "fields": {
+              "image": ":self"
+            }
+          },
+          "fields": [
+            {
+              "name": "image",
+              "label": "Image or PDF",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "key": "2b598ac1697d3858",
+          "section": "pages",
+          "label": "Concert sponsorship levels and contact information — open full size",
+          "kind": "image",
+          "default": {
+            "id": "2b598ac1697d3858",
+            "title": "Concert sponsorship levels and contact information — open full size",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#773f0abb",
+            "image": "/assets/sponsor-details.webp",
+            "date": "",
+            "visible": true,
+            "order": 110
+          },
+          "binding": {
+            "id": "2b598ac1697d3858",
+            "key": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#773f0abb",
+            "file": "Night-of-the-Living-Loud.html",
+            "selector": "img[src=\"/assets/sponsor-details.webp\"]",
+            "fields": {
+              "image": ":self"
+            }
+          },
+          "fields": [
+            {
+              "name": "image",
+              "label": "Image or PDF",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "key": "6a5fff631c2ce559",
+          "section": "pages",
+          "label": "Full-page concert flyer",
+          "kind": "image",
+          "default": {
+            "id": "6a5fff631c2ce559",
+            "title": "Full-page concert flyer",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#52cdf0ba",
+            "image": "/assets/print-flyer.webp",
+            "date": "",
+            "visible": true,
+            "order": 120
+          },
+          "binding": {
+            "id": "6a5fff631c2ce559",
+            "key": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#52cdf0ba",
+            "file": "Night-of-the-Living-Loud.html",
+            "selector": "img[src=\"/assets/print-flyer.webp\"]",
+            "fields": {
+              "image": ":self"
+            }
+          },
+          "fields": [
+            {
+              "name": "image",
+              "label": "Image or PDF",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "key": "2e500d27032f9bf5",
+          "section": "pages",
+          "label": "Concert handbill",
+          "kind": "image",
+          "default": {
+            "id": "2e500d27032f9bf5",
+            "title": "Concert handbill",
+            "subtitle": "",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#8524ce60",
+            "image": "/assets/concert-handbill.webp",
+            "date": "",
+            "visible": true,
+            "order": 130
+          },
+          "binding": {
+            "id": "2e500d27032f9bf5",
+            "key": "https://www.ragefordemocracy.com/Night-of-the-Living-Loud.html#8524ce60",
+            "file": "Night-of-the-Living-Loud.html",
+            "selector": "img[src=\"/assets/concert-handbill.webp\"]",
+            "fields": {
+              "image": ":self"
+            }
+          },
+          "fields": [
+            {
+              "name": "image",
+              "label": "Image or PDF",
+              "type": "image"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "what-we-stand-for.html",
+      "title": "What We Stand For",
+      "blocks": [
+        {
+          "key": "471bf74b092c0169",
+          "section": "pages",
+          "label": "Page introduction",
+          "kind": "text",
+          "default": {
+            "id": "471bf74b092c0169",
+            "title": "What We Stand For",
+            "subtitle": "RAGE FOR DEMOCRACY",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#2d5a01fd",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 40
+          },
+          "binding": {
+            "id": "471bf74b092c0169",
+            "key": "https://www.ragefordemocracy.com/what-we-stand-for.html#2d5a01fd",
+            "file": "what-we-stand-for.html",
+            "selector": ".page-heading",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": "p:not(.eyebrow)"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading above the title",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "4c2200f909eae3ed",
+          "section": "pages",
+          "label": "Transparency and Justice",
+          "kind": "text",
+          "default": {
+            "id": "4c2200f909eae3ed",
+            "title": "Transparency and Justice",
+            "subtitle": "",
+            "body": "We believe in transparency, accountability, and equal justice under the law. We stand with survivors of abuse and with all people who have too often been ignored, silenced, or failed by powerful institutions. Justice should never depend on wealth, status, or political connections.",
+            "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#2150f970",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 60
+          },
+          "binding": {
+            "id": "4c2200f909eae3ed",
+            "key": "https://www.ragefordemocracy.com/what-we-stand-for.html#2150f970",
+            "file": "what-we-stand-for.html",
+            "selector": ".principles section:nth-child(1)",
+            "fields": {
+              "title": "h2",
+              "body": "p"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "472c96102a2a4f87",
+          "section": "pages",
+          "label": "Support for Immigrants and Communities of Color",
+          "kind": "text",
+          "default": {
+            "id": "472c96102a2a4f87",
+            "title": "Support for Immigrants and Communities of Color",
+            "subtitle": "",
+            "body": "We stand with immigrants and communities of color in our region. Every person deserves dignity, respect, and equal treatment, regardless of where they come from or the color of their skin. We reject fear, division, and scapegoating, and we believe our communities are strongest when everyone is protected, included, and able to participate fully.",
+            "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#63a7aa08",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 70
+          },
+          "binding": {
+            "id": "472c96102a2a4f87",
+            "key": "https://www.ragefordemocracy.com/what-we-stand-for.html#63a7aa08",
+            "file": "what-we-stand-for.html",
+            "selector": ".principles section:nth-child(2)",
+            "fields": {
+              "title": "h2",
+              "body": "p"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "e42a85152f8dc0ed",
+          "section": "pages",
+          "label": "Civic Education",
+          "kind": "text",
+          "default": {
+            "id": "e42a85152f8dc0ed",
+            "title": "Civic Education",
+            "subtitle": "",
+            "body": "Our movement is rooted in solidarity. When someone gets knocked down, we help lift them up. We look out for one another, make space for one another, and refuse to leave people behind. We believe strong communities are built through care, courage, and collective action.",
+            "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#acf5562a",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 80
+          },
+          "binding": {
+            "id": "e42a85152f8dc0ed",
+            "key": "https://www.ragefordemocracy.com/what-we-stand-for.html#acf5562a",
+            "file": "what-we-stand-for.html",
+            "selector": ".principles section:nth-child(3)",
+            "fields": {
+              "title": "h2",
+              "body": "p"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "9773c514cd59c685",
+          "section": "pages",
+          "label": "We Protect Our Own",
+          "kind": "text",
+          "default": {
+            "id": "9773c514cd59c685",
+            "title": "We Protect Our Own",
+            "subtitle": "",
+            "body": "Our movement carries pit energy: when someone gets knocked down, we pick them up. We look out for each other, make space for one another, and refuse to leave people behind. We believe strength comes from solidarity, and real community means showing up, standing together, and helping each other through the fight.",
+            "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#5d8a5c09",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 90
+          },
+          "binding": {
+            "id": "9773c514cd59c685",
+            "key": "https://www.ragefordemocracy.com/what-we-stand-for.html#5d8a5c09",
+            "file": "what-we-stand-for.html",
+            "selector": ".principles section:nth-child(4)",
+            "fields": {
+              "title": "h2",
+              "body": "p"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "community-supporters.html",
+      "title": "Community Supporters",
+      "blocks": [
+        {
+          "key": "c1fd093f4eb0ad08",
+          "section": "pages",
+          "label": "Page introduction",
+          "kind": "text",
+          "default": {
+            "id": "c1fd093f4eb0ad08",
+            "title": "Community Supporters",
+            "subtitle": "OUR COMMUNITY",
+            "body": "",
+            "link": "https://www.ragefordemocracy.com/community-supporters.html#2d5a01fd",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 20
+          },
+          "binding": {
+            "id": "c1fd093f4eb0ad08",
+            "key": "https://www.ragefordemocracy.com/community-supporters.html#2d5a01fd",
+            "file": "community-supporters.html",
+            "selector": ".page-heading",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": "p:not(.eyebrow)"
+            }
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading above the title",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Text",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "85731d3f244887ee",
+          "section": "pages",
+          "label": "Business supporters introduction",
+          "kind": "text",
+          "default": {
+            "id": "85731d3f244887ee",
+            "title": "Your Business Could Be Here",
+            "subtitle": "",
+            "body": "Rage for Democracy is proud to partner with local businesses that believe in stronger communities, civic engagement, education, volunteerism, and bringing neighbors together. Whether it’s a donated gift card, event supplies, raffle item, food donation, or sponsorship, every contribution helps us create meaningful community events and programs throughout East Contra Costa County.",
+            "link": "",
+            "image": "/assets/community-bbq.webp",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Description",
+              "type": "textarea"
+            },
+            {
+              "name": "image",
+              "label": "Photo",
+              "type": "image"
+            }
+          ],
+          "binding": {
+            "id": "85731d3f244887ee",
+            "file": "community-supporters.html",
+            "selector": ".support-copy",
+            "fields": {
+              "title": "h3",
+              "body": "p",
+              "image": "img"
+            }
+          }
+        },
+        {
+          "key": "supporters-community-supporters.html",
+          "section": "supporters",
+          "label": "Community partner logos",
+          "kind": "collection"
+        }
+      ]
+    },
+    {
+      "file": "join-us.html",
+      "title": "Join now",
+      "blocks": [
+        {
+          "key": "188ddceeed117e09",
+          "section": "pages",
+          "label": "Join page introduction",
+          "kind": "text",
+          "default": {
+            "id": "188ddceeed117e09",
+            "title": "Be part of RFD.",
+            "subtitle": "JOIN THE CREW",
+            "body": "Come to an event, volunteer, or stay connected with what’s happening.",
+            "link": "",
+            "image": "/assets/community-art.webp",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "text"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Introduction",
+              "type": "textarea"
+            },
+            {
+              "name": "image",
+              "label": "Photo",
+              "type": "image"
+            }
+          ],
+          "binding": {
+            "id": "188ddceeed117e09",
+            "file": "join-us.html",
+            "selector": ".join-intro",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".eyebrow",
+              "body": "p:not(.eyebrow)",
+              "image": "img"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
