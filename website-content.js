@@ -5,7 +5,7 @@ import {randomBytes} from 'node:crypto';
 const id=()=>randomBytes(8).toString('hex'),clean=v=>String(v??'').trim();
 const sections=['events','pages','civics','supporters','photos'];
 const blank=()=>Object.fromEntries(sections.map(section=>[section,[]]));
-const safeItem=(value={})=>({id:clean(value.id)||id(),title:clean(value.title).slice(0,160),subtitle:clean(value.subtitle).slice(0,240),body:clean(value.body).slice(0,8000),link:clean(value.link).slice(0,1000),image:clean(value.image).slice(0,1000),date:clean(value.date).slice(0,40),visible:value.visible!==false,order:Number.isFinite(Number(value.order))?Number(value.order):0});
+const safeItem=(value={})=>({id:clean(value.id)||id(),title:clean(value.title).slice(0,160),subtitle:clean(value.subtitle).slice(0,240),body:clean(value.body).slice(0,8000),link:clean(value.link).slice(0,1000),image:clean(value.image).slice(0,1000),date:clean(value.date).slice(0,40),time:clean(value.time).slice(0,40),location:clean(value.location).slice(0,300),lineup:clean(value.lineup).slice(0,3000),status:clean(value.status).slice(0,80),showPopup:value.showPopup===true,visible:value.visible!==false,order:Number.isFinite(Number(value.order))?Number(value.order):0});
 const safeContent=value=>Object.fromEntries(sections.map(section=>[section,(Array.isArray(value?.[section])?value[section]:[]).slice(0,200).map(safeItem)]));
 
 export function createWebsiteContent({db,save,audit,dataDir}){
