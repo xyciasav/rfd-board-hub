@@ -78,7 +78,7 @@ Content-Type: application/json
 
 In Portainer, set `WEBSITE_SIGNUP_TOKEN` to a random secret of at least 32 characters. Configure the same secret only in the website's server-side environment; never include it in browser JavaScript. The website backend should proxy the Join Now submission to this endpoint. Set `WEBSITE_SIGNUP_ORIGINS` to a comma-separated list of permitted website origins if they differ from the default `https://ragefordemocracy.com,https://www.ragefordemocracy.com`.
 
-The endpoint validates names, email, phone, ZIP code, consent, and interests. A repeated email updates the existing contact instead of creating a duplicate. Imported contacts appear in **Sign Up Mode → Signup list** and its CSV export with `Website` as their source.
+The endpoint validates names, email, phone, ZIP code, consent, and interests. A repeated email updates the existing contact instead of creating a duplicate. Imported contacts appear in **Sign Ups → Signup list** and its CSV export with `Website` as their source.
 
 ### Public website content
 
