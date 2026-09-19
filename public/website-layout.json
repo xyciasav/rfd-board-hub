@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "previewOrigin": "http://10.0.0.230:4390",
   "pages": [
     {
@@ -7,37 +7,104 @@
       "title": "Home",
       "blocks": [
         {
-          "key": "e22adf18d8366110",
+          "key": "1695a092b430d02f",
           "section": "pages",
-          "label": "Our core values",
-          "kind": "image",
+          "label": "Homepage introduction",
+          "kind": "text",
           "default": {
-            "id": "e22adf18d8366110",
-            "title": "Our core values",
-            "subtitle": "",
-            "body": "",
-            "link": "https://www.ragefordemocracy.com/index.html#95ad90c5",
-            "image": "/assets/core-values.webp",
+            "id": "1695a092b430d02f",
+            "title": "Local action.\nReal community.",
+            "subtitle": "BRENTWOOD, CALIFORNIA",
+            "body": "We bring people together through civic education, direct action, creativity, and music.",
+            "link": "",
+            "image": "",
             "date": "",
             "visible": true,
-            "order": 50
-          },
-          "binding": {
-            "id": "e22adf18d8366110",
-            "key": "https://www.ragefordemocracy.com/index.html#95ad90c5",
-            "file": "index.html",
-            "selector": ".artwork-wrap",
-            "fields": {
-              "image": "img"
-            }
+            "order": 0
           },
           "fields": [
             {
+              "name": "title",
+              "label": "Main heading",
+              "type": "textarea"
+            },
+            {
+              "name": "subtitle",
+              "label": "Location line",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Introduction",
+              "type": "textarea"
+            }
+          ],
+          "binding": {
+            "id": "1695a092b430d02f",
+            "file": "index.html",
+            "selector": ".home-intro-copy",
+            "fields": {
+              "title": "h1",
+              "subtitle": ".masthead-location",
+              "body": ":scope > p:not(.masthead-location)"
+            }
+          }
+        },
+        {
+          "key": "events-index.html",
+          "section": "events",
+          "label": "Featured event and popup",
+          "kind": "collection"
+        },
+        {
+          "key": "af11e64b3dd4935c",
+          "section": "pages",
+          "label": "Core values introduction",
+          "kind": "text",
+          "default": {
+            "id": "af11e64b3dd4935c",
+            "title": "Community work\nwith some volume.",
+            "subtitle": "WHAT WE DO",
+            "body": "Education, outreach, and places where people can connect and take action.",
+            "link": "",
+            "image": "/assets/core-values.webp",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "textarea"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading",
+              "type": "text"
+            },
+            {
+              "name": "body",
+              "label": "Introduction",
+              "type": "textarea"
+            },
+            {
               "name": "image",
-              "label": "Image or PDF",
+              "label": "Core values artwork",
               "type": "image"
             }
-          ]
+          ],
+          "binding": {
+            "id": "af11e64b3dd4935c",
+            "file": "index.html",
+            "selector": ".home-values",
+            "fields": {
+              "title": ".values-intro h2",
+              "subtitle": ".values-intro .eyebrow",
+              "body": ".values-intro > p:not(.eyebrow)",
+              "image": ".artwork-wrap img"
+            }
+          }
         },
         {
           "key": "398f55b15f08fd69",
@@ -91,10 +158,42 @@
           "filter": "Home"
         },
         {
-          "key": "events-index.html",
-          "section": "events",
-          "label": "Featured event and popup",
-          "kind": "collection"
+          "key": "957b46dceb3853bb",
+          "section": "pages",
+          "label": "Homepage closing invitation",
+          "kind": "text",
+          "default": {
+            "id": "957b46dceb3853bb",
+            "title": "SHOW UP.\nGET LOUD.",
+            "subtitle": "OUR DREAM IS POWERED BY PEOPLE LIKE YOU.",
+            "body": "",
+            "link": "",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "textarea"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading",
+              "type": "text"
+            }
+          ],
+          "binding": {
+            "id": "957b46dceb3853bb",
+            "file": "index.html",
+            "selector": ".join.section",
+            "fields": {
+              "title": "h2",
+              "subtitle": ".eyebrow"
+            }
+          }
         }
       ]
     },
@@ -518,6 +617,42 @@
           ]
         },
         {
+          "key": "ecdafbc9d40be143",
+          "section": "pages",
+          "label": "Guiding commitments",
+          "kind": "text",
+          "default": {
+            "id": "ecdafbc9d40be143",
+            "title": "Guiding commitments",
+            "subtitle": "",
+            "body": "DIGNITY.\nJUSTICE.\nSOLIDARITY.\nACTION.",
+            "link": "",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "body",
+              "label": "One commitment per line",
+              "type": "textarea"
+            }
+          ],
+          "binding": {
+            "id": "ecdafbc9d40be143",
+            "file": "what-we-stand-for.html",
+            "selector": ".stand-credo",
+            "fields": {
+              "body": {
+                "selector": ":self",
+                "property": "lines",
+                "tag": "span"
+              }
+            }
+          }
+        },
+        {
           "key": "4c2200f909eae3ed",
           "section": "pages",
           "label": "Transparency and Justice",
@@ -526,7 +661,7 @@
             "id": "4c2200f909eae3ed",
             "title": "Transparency and Justice",
             "subtitle": "",
-            "body": "We believe in transparency, accountability, and equal justice under the law. We stand with survivors of abuse and with all people who have too often been ignored, silenced, or failed by powerful institutions. Justice should never depend on wealth, status, or political connections.",
+            "body": "We believe in transparency, accountability, and equal justice under the law. We stand with survivors of abuse and those whose voices have been ignored or silenced. Every person deserves to be treated with dignity, and justice should never depend on wealth, status, or political connections.",
             "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#2150f970",
             "image": "",
             "date": "",
@@ -559,13 +694,13 @@
         {
           "key": "472c96102a2a4f87",
           "section": "pages",
-          "label": "Support for Immigrants and Communities of Color",
+          "label": "Dignity and Inclusion for All",
           "kind": "text",
           "default": {
             "id": "472c96102a2a4f87",
-            "title": "Support for Immigrants and Communities of Color",
+            "title": "Dignity and Inclusion for All",
             "subtitle": "",
-            "body": "We stand with immigrants and communities of color in our region. Every person deserves dignity, respect, and equal treatment, regardless of where they come from or the color of their skin. We reject fear, division, and scapegoating, and we believe our communities are strongest when everyone is protected, included, and able to participate fully.",
+            "body": "We stand with immigrants, communities of color, and all those who face discrimination or exclusion. Everyone deserves dignity, respect, and the opportunity to belong. We celebrate the diversity of our communities and believe everyone should have a voice and a place at the table.",
             "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#63a7aa08",
             "image": "",
             "date": "",
@@ -598,13 +733,13 @@
         {
           "key": "e42a85152f8dc0ed",
           "section": "pages",
-          "label": "Civic Education",
+          "label": "Civic Education and Participation",
           "kind": "text",
           "default": {
             "id": "e42a85152f8dc0ed",
-            "title": "Civic Education",
+            "title": "Civic Education and Participation",
             "subtitle": "",
-            "body": "Our movement is rooted in solidarity. When someone gets knocked down, we help lift them up. We look out for one another, make space for one another, and refuse to leave people behind. We believe strong communities are built through care, courage, and collective action.",
+            "body": "Knowledge is power, and it belongs to everyone. We believe people should understand their rights, how their government works, and how to make their voices heard. Through accessible, nonpartisan civic education, we help our communities build the knowledge and confidence to participate in democracy.",
             "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#acf5562a",
             "image": "",
             "date": "",
@@ -637,13 +772,13 @@
         {
           "key": "9773c514cd59c685",
           "section": "pages",
-          "label": "We Protect Our Own",
+          "label": "Solidarity in Action",
           "kind": "text",
           "default": {
             "id": "9773c514cd59c685",
-            "title": "We Protect Our Own",
+            "title": "Solidarity in Action",
             "subtitle": "",
-            "body": "Our movement carries pit energy: when someone gets knocked down, we pick them up. We look out for each other, make space for one another, and refuse to leave people behind. We believe strength comes from solidarity, and real community means showing up, standing together, and helping each other through the fight.",
+            "body": "We bring the spirit of the pit into our communities: when someone falls, we pick them up. We look out for one another, make space for everyone, and refuse to leave people behind. Through music, mutual aid, and community service, we turn solidarity into action.",
             "link": "https://www.ragefordemocracy.com/what-we-stand-for.html#5d8a5c09",
             "image": "",
             "date": "",
@@ -672,6 +807,44 @@
               "type": "textarea"
             }
           ]
+        },
+        {
+          "key": "728ab3a6a7159ccd",
+          "section": "pages",
+          "label": "Closing invitation",
+          "kind": "text",
+          "default": {
+            "id": "728ab3a6a7159ccd",
+            "title": "Stand with us.\nShow up with us.",
+            "subtitle": "VALUES BECOME REAL THROUGH ACTION",
+            "body": "",
+            "link": "",
+            "image": "",
+            "date": "",
+            "visible": true,
+            "order": 0
+          },
+          "fields": [
+            {
+              "name": "title",
+              "label": "Heading",
+              "type": "textarea"
+            },
+            {
+              "name": "subtitle",
+              "label": "Small heading",
+              "type": "text"
+            }
+          ],
+          "binding": {
+            "id": "728ab3a6a7159ccd",
+            "file": "what-we-stand-for.html",
+            "selector": ".stand-action",
+            "fields": {
+              "title": "h2",
+              "subtitle": ".eyebrow"
+            }
+          }
         }
       ]
     },
