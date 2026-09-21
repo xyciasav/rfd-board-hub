@@ -1,0 +1,23 @@
+/* Brand red identifies RFD; these colors communicate performance direction. */
+.insight-stories>div{background:#f3f1ef;border-left:4px solid #777}
+.insight-stories>div.positive{background:#edf8f1;border-left-color:#18864b}
+.insight-stories>div.positive small{color:#336b4d}
+
+.insight-metrics span.up{background:#e4f5eb;color:#126b3d}
+.insight-metrics span.down{background:#fde8e8;color:#b4232b}
+.insight-metrics span.neutral{background:#eeeeec;color:#666}
+.insight-metrics .primary span.up{background:#d8f5e4;color:#075c31}
+.insight-metrics .primary span.down{background:#fff0f0;color:#89131a}
+.insight-metrics .primary span.neutral{background:#ffffff25;color:#fff}
+
+.up{color:#137442}
+.down{color:#bd1f2d}
+.move-row i{background:#747474}
+.move-row.up i:not(.prior){background:#18864b}
+.move-row.down i:not(.prior){background:#d71920}
+
+.goal.close>i em{background:#d48708}
+.goal.met>i em{background:#18864b}
+.goal.close>strong{color:#9a6205}
+.goal.met>strong{color:#137442}
+.goal.behind>strong{color:#bd1f2d}
