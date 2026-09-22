@@ -51,6 +51,13 @@
           }
         },
         {
+          "key": "photos-index.html",
+          "section": "photos",
+          "label": "Homepage slideshow",
+          "kind": "collection",
+          "filter": "Slideshow"
+        },
+        {
           "key": "events-index.html",
           "section": "events",
           "label": "Featured event and popup",
