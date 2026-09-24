@@ -1,6 +1,6 @@
 import { timingSafeEqual, createHash, randomBytes } from 'node:crypto';
 
-export function createWebsiteIntake({db,save,audit,token=process.env.WEBSITE_SIGNUP_TOKEN,allowedOrigins=process.env.WEBSITE_SIGNUP_ORIGINS||'https://ragefordemocracy.com,https://www.ragefordemocracy.com'}) {
+export function createWebsiteIntake({db,save,audit,sendWelcome=async()=>{},token=process.env.WEBSITE_SIGNUP_TOKEN,allowedOrigins=process.env.WEBSITE_SIGNUP_ORIGINS||'https://ragefordemocracy.com,https://www.ragefordemocracy.com'}) {
   let queue=Promise.resolve();
   const origins=new Set(String(allowedOrigins).split(',').map(x=>x.trim()).filter(Boolean));
   return async function websiteIntake(req,res) {
@@ -37,7 +37,9 @@ export function createWebsiteIntake({db,save,audit,token=process.env.WEBSITE_SIG
         return !existing;
       });
       queue=operation.catch(()=>{});const created=await operation;
-      return reply(created?201:200,{ok:true,created});
+      let emailWarning='';
+      if(created){try{await sendWelcome(db.signups.find(x=>String(x.email||'').toLowerCase()===email));}catch(error){emailWarning=error.message||'Welcome email could not be sent.';}}
+      return reply(created?201:200,{ok:true,created,emailWarning});
     }catch(error){console.error('Website signup failed',error);return reply(500,{error:'Unable to save signup. Please try again.'});}
   };
 }

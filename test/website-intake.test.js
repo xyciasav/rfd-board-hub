@@ -26,3 +26,14 @@ test('website intake handles approved CORS preflight and rejects unknown origins
   let res=response();await handler(request(undefined,{method:'OPTIONS'}),res);assert.equal(res.status,204);assert.equal(res.headers['Access-Control-Allow-Origin'],'https://ragefordemocracy.com');
   res=response();await handler(request(valid,{origin:'https://example.com'}),res);assert.equal(res.status,403);
 });
+
+test('website intake sends one welcome email only for a new contact',async()=>{
+  const db={signups:[]},sent=[],handler=createWebsiteIntake({db,token,save:async()=>{},audit:()=>{},sendWelcome:async item=>sent.push(item.email)});
+  let res=response();await handler(request(valid),res);assert.equal(res.status,201);assert.deepEqual(sent,['jane@example.com']);
+  res=response();await handler(request({...valid,phone:'925-555-0199'}),res);assert.equal(res.status,200);assert.deepEqual(sent,['jane@example.com']);
+});
+
+test('website intake keeps the signup when welcome email delivery fails',async()=>{
+  const db={signups:[]},handler=createWebsiteIntake({db,token,save:async()=>{},audit:()=>{},sendWelcome:async()=>{throw Error('Email service unavailable')}});
+  const res=response();await handler(request(valid),res);const result=JSON.parse(res.payload);assert.equal(res.status,201);assert.equal(db.signups.length,1);assert.equal(result.emailWarning,'Email service unavailable');
+});
