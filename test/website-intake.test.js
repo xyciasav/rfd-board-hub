@@ -37,3 +37,8 @@ test('website intake keeps the signup when welcome email delivery fails',async()
   const db={signups:[]},handler=createWebsiteIntake({db,token,save:async()=>{},audit:()=>{},sendWelcome:async()=>{throw Error('Email service unavailable')}});
   const res=response();await handler(request(valid),res);const result=JSON.parse(res.payload);assert.equal(res.status,201);assert.equal(db.signups.length,1);assert.equal(result.emailWarning,'Email service unavailable');
 });
+
+test('website intake stores donation choice and returns checkout configuration',async()=>{
+  const db={signups:[],integrations:{donations:{oneTimeUrl:'https://square.example/once',recurringUrl:'https://square.example/monthly'}}},handler=createWebsiteIntake({db,token,save:async()=>{},audit:()=>{}});
+  const res=response();await handler(request({...valid,donate:true,donationType:'recurring'}),res);const result=JSON.parse(res.payload);assert.equal(db.signups[0].donate,true);assert.equal(db.signups[0].donationType,'Recurring');assert.equal(result.donations.recurringUrl,'https://square.example/monthly');
+});

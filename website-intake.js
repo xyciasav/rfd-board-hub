@@ -29,17 +29,18 @@ export function createWebsiteIntake({db,save,audit,sendWelcome=async()=>{},token
       const operation=queue.then(async()=>{
         const existing=db.signups.find(x=>String(x.email||'').toLowerCase()===email);
         const consentAt=new Date().toISOString();
-        const fields={firstName,lastName,email,phone,postalCode,interests,volunteer:b.volunteer===true,updates:b.updates===true,consent:b.updates===true,contactConsent:true,consentAt,source:'website',capturedBy:'RFD website'};
+        const donate=b.donate===true,donationType=donate&&b.donationType==='recurring'?'Recurring':'One-time';
+        const fields={firstName,lastName,email,phone,postalCode,interests,volunteer:b.volunteer===true,updates:b.updates===true,consent:b.updates===true,contactConsent:true,consentAt,source:'website',capturedBy:'RFD website',donate,donationType};
         let old;
         if(existing){old={...existing};Object.assign(existing,fields);}
-        else db.signups.unshift({...fields,id:randomBytes(8).toString('hex'),createdAt:consentAt,donate:false,donationType:'One-time'});
+        else db.signups.unshift({...fields,id:randomBytes(8).toString('hex'),createdAt:consentAt});
         try{audit({name:'RFD website'},existing?'website signup updated':'website signup added',`${firstName} ${lastName}`);await save();}catch(error){if(existing)Object.assign(existing,old);else db.signups.shift();throw error;}
         return !existing;
       });
       queue=operation.catch(()=>{});const created=await operation;
       let emailWarning='';
       if(created){try{await sendWelcome(db.signups.find(x=>String(x.email||'').toLowerCase()===email));}catch(error){emailWarning=error.message||'Welcome email could not be sent.';}}
-      return reply(created?201:200,{ok:true,created,emailWarning});
+      return reply(created?201:200,{ok:true,created,emailWarning,donations:b.donate===true?db.integrations?.donations||{}:{}});
     }catch(error){console.error('Website signup failed',error);return reply(500,{error:'Unable to save signup. Please try again.'});}
   };
 }
