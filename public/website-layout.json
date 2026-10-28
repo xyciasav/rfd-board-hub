@@ -1012,6 +1012,18 @@
       ]
     },
     {
+      "file": "news-media.html",
+      "title": "News & Media",
+      "blocks": [
+        {
+          "key": "media-news-media.html",
+          "section": "media",
+          "label": "Press, news, videos, and community coverage",
+          "kind": "collection"
+        }
+      ]
+    },
+    {
       "file": "community-supporters.html",
       "title": "Community Supporters",
       "blocks": [

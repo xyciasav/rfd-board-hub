@@ -3,7 +3,7 @@ import {join} from 'node:path';
 import {randomBytes} from 'node:crypto';
 
 const id=()=>randomBytes(8).toString('hex'),clean=v=>String(v??'').trim();
-const sections=['events','pages','civics','supporters','photos'];
+const sections=['events','pages','civics','supporters','photos','media'];
 const blank=()=>Object.fromEntries(sections.map(section=>[section,[]]));
 const safeShowtimes=value=>(Array.isArray(value)?value:[]).slice(0,12).map(item=>({label:clean(item?.label).slice(0,40),url:clean(item?.url).slice(0,1000)})).filter(item=>item.label&&item.url);
 const safeItem=(value={})=>({id:clean(value.id)||id(),title:clean(value.title).slice(0,160),subtitle:clean(value.subtitle).slice(0,240),body:clean(value.body).slice(0,8000),link:clean(value.link).slice(0,1000),image:clean(value.image).slice(0,1000),date:clean(value.date).slice(0,40),time:clean(value.time).slice(0,40),location:clean(value.location).slice(0,300),lineup:clean(value.lineup).slice(0,3000),showtimes:safeShowtimes(value.showtimes),status:clean(value.status).slice(0,80),showPopup:value.showPopup===true,visible:value.visible!==false,order:Number.isFinite(Number(value.order))?Number(value.order):0});
@@ -12,6 +12,8 @@ const publicContent=value=>({...value,events:(value.events||[]).map(event=>({...
 
 export function createWebsiteContent({db,save,audit,dataDir}){
   db.websiteContent=db.websiteContent&&typeof db.websiteContent==='object'?db.websiteContent:{draft:blank(),published:blank(),history:[]};
+  const starterMedia=[{id:'mediaherald1023',title:'City of Brentwood presents Night of the Living Loud',subtitle:'Contra Costa Herald',body:'A closer look at the all-ages Halloween concert bringing live music, community organizations, and civic participation together.',link:'https://contracostaherald.com/city-of-brentwood-presents-night-of-the-living-loud-halloween-concert-oct-30/',image:'',date:'2026-10-23',status:'Press',visible:true,order:0},{id:'mediapress1023',title:'Night of the Living Loud featured in “On the Horizon”',subtitle:'The Press',body:'The Press spotlights Rage for Democracy’s free all-ages Halloween concert at the Brentwood Community Center.',link:'https://embed-rech-01.dialog.cm/brentwoodpress/docs/the_press_-_10-23-2026',image:'',date:'2026-10-23',status:'Press',visible:true,order:10},{id:'mediabbq0926',title:'Community BBQ & Clothing and Food Drive',subtitle:'Visit California Delta',body:'An afternoon of food, music, kid activities, mutual aid, and neighbors coming together in Brentwood.',link:'https://visitcadelta.com/event/community-bbq-clothing-food-drive-in-brentwood/2026-09-26/',image:'',date:'2026-09-26',status:'Community',visible:true,order:20}];
+  if(!Array.isArray(db.websiteContent.draft?.media))db.websiteContent.draft.media=structuredClone(starterMedia);
   db.websiteContent.draft=safeContent(db.websiteContent.draft);db.websiteContent.published=safeContent(db.websiteContent.published);db.websiteContent.history=Array.isArray(db.websiteContent.history)?db.websiteContent.history:[];
   const reply=(res,status,data,headers={})=>{res.writeHead(status,{'content-type':'application/json','cache-control':'no-store',...headers});res.end(JSON.stringify(data));};
   async function publicRoute(req,res,url){

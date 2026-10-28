@@ -7,6 +7,7 @@ const fields={
  photos:[F('title','Photo caption'),F('subtitle','Small heading'),F('body','Description','textarea'),F('image','Image','image'),F('link','Optional link','url')],
  civics:[F('title','Resource title'),F('subtitle','Short description'),F('body','Details','textarea'),F('image','Handout image or PDF','image'),F('link','Optional resource link','url')],
  supporters:[F('title','Organization name'),F('subtitle','Short description'),F('body','About this supporter','textarea'),F('image','Logo','image'),F('link','Website URL','url')],
+ media:[F('title','Headline'),F('status','Type — Press, Community, Video, or Update'),F('subtitle','Outlet or source'),F('date','Published date','date'),F('body','Short summary','textarea'),F('link','Article or media URL','url'),F('image','Optional image or thumbnail','image')],
  pages:[F('title','Heading'),F('subtitle','Short description'),F('body','Text','textarea'),F('image','Image','image'),F('link','Optional link','url')]
 };
 const fileData=file=>new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not read the file.'));reader.readAsDataURL(file);});
