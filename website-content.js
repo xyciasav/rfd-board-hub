@@ -17,6 +17,8 @@ export function createWebsiteContent({db,save,audit,dataDir}){
   for(const item of starterMedia)if(!db.websiteContent.draft.media.some(existing=>existing.id===item.id))db.websiteContent.draft.media.push(structuredClone(item));
   const starterImages={mediabbq0926:'/assets/community-bbq.webp',mediarageclean0613:'/assets/rage-clean.jpg',mediabbq0425:'/assets/community-art.webp'};
   for(const item of db.websiteContent.draft.media)if(!item.image&&starterImages[item.id])item.image=starterImages[item.id];
+  const archivedConcert={id:'pagestatenotll',title:'Night of the Living Loud',subtitle:'',body:'',link:'',image:'',date:'',status:'page-state:Night-of-the-Living-Loud.html',visible:false,order:0};
+  if(!db.websiteContent.draft.pages.some(item=>item.status===archivedConcert.status))db.websiteContent.draft.pages.push(archivedConcert);
   db.websiteContent.draft=safeContent(db.websiteContent.draft);db.websiteContent.published=safeContent(db.websiteContent.published);db.websiteContent.history=Array.isArray(db.websiteContent.history)?db.websiteContent.history:[];
   const reply=(res,status,data,headers={})=>{res.writeHead(status,{'content-type':'application/json','cache-control':'no-store',...headers});res.end(JSON.stringify(data));};
   async function publicRoute(req,res,url){
