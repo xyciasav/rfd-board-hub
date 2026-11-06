@@ -3,7 +3,7 @@ import {confirmDialog,messageDialog} from './ui-dialog.js';
 const HUB=location.origin;
 const F=(name,label,type='text')=>({name,label,type});
 const fields={
- events:[F('title','Event name'),F('date','Date','date'),F('time','Start time','time'),F('location','Venue'),F('subtitle','Short description'),F('body','Event description','textarea'),F('lineup','Bands — one per line','textarea'),F('link','Event details URL','url'),F('showtimes','Showtime buttons — one per line: time | ticket URL','showtimes'),F('image','Flyer','image'),F('showPopup','Show the homepage popup','checkbox')],
+ events:[F('title','Event name'),F('date','Date','date'),F('time','Start time','time'),F('location','Venue'),F('subtitle','Short description'),F('body','Event description','textarea'),F('lineup','Bands — one per line','textarea'),F('link','Button destination URL','url'),F('buttonLabel','Button text'),F('showtimes','Showtime buttons — one per line: time | ticket URL','showtimes'),F('image','Flyer','image'),F('showPopup','Show the homepage popup','checkbox')],
  photos:[F('title','Photo caption'),F('subtitle','Small heading'),F('body','Description','textarea'),F('image','Image','image'),F('link','Optional link','url')],
  civics:[F('title','Resource title'),F('subtitle','Short description'),F('body','Details','textarea'),F('image','Handout image or PDF','image'),F('link','Optional resource link','url')],
  supporters:[F('title','Organization name'),F('subtitle','Short description'),F('body','About this supporter','textarea'),F('image','Logo','image'),F('link','Website URL','url')],
