@@ -9,4 +9,5 @@
 .event-signup-dialog header,.event-email-dialog header{display:flex;align-items:start;justify-content:space-between;gap:20px;margin-bottom:20px}
 .event-desk-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:18px}
 .event-email-dialog label{display:grid;gap:7px;margin:14px 0;font-weight:700}.event-email-dialog textarea{min-height:220px}
+.contact-state{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap}.contact-state.known{color:#17643f;background:#e4f5eb}.contact-state.event-only{color:#6f4c12;background:#fff2cf}.contact-state+small{display:block;margin-top:5px;color:var(--muted)}
 @media(max-width:700px){.event-registration-cards article{align-items:stretch;flex-direction:column}.event-desk-actions>*{flex:1}.event-signup-dialog>form,.event-email-dialog>form{padding:18px}}
