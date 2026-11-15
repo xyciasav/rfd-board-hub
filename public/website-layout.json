@@ -201,162 +201,18 @@
               "subtitle": ".eyebrow"
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "file": "about.html",
+      "title": "About Us",
+      "blocks": [
         {
-          "key": "social-instagram",
-          "section": "pages",
-          "label": "Social links · Instagram",
-          "kind": "social",
-          "platform": "instagram",
-          "default": {
-            "id": "social-instagram",
-            "title": "Instagram",
-            "subtitle": "SOCIAL MEDIA",
-            "body": "",
-            "link": "",
-            "image": "",
-            "date": "",
-            "visible": true,
-            "order": 200
-          },
-          "fields": [
-            {
-              "name": "link",
-              "label": "Instagram URL",
-              "type": "url"
-            }
-          ],
-          "binding": null
-        },
-        {
-          "key": "social-substack",
-          "section": "pages",
-          "label": "Social links · Substack",
-          "kind": "social",
-          "platform": "substack",
-          "default": {
-            "id": "social-substack",
-            "title": "Substack",
-            "subtitle": "SOCIAL MEDIA",
-            "body": "",
-            "link": "https://ragefordemocracy.substack.com/",
-            "image": "",
-            "date": "",
-            "visible": true,
-            "order": 201
-          },
-          "fields": [
-            {
-              "name": "link",
-              "label": "Substack URL",
-              "type": "url"
-            }
-          ],
-          "binding": null
-        },
-        {
-          "key": "social-signal",
-          "section": "pages",
-          "label": "Social links · Signal",
-          "kind": "social",
-          "platform": "signal",
-          "default": {
-            "id": "social-signal",
-            "title": "Signal",
-            "subtitle": "SOCIAL MEDIA",
-            "body": "",
-            "link": "",
-            "image": "",
-            "date": "",
-            "visible": true,
-            "order": 202
-          },
-          "fields": [
-            {
-              "name": "link",
-              "label": "Signal URL",
-              "type": "url"
-            }
-          ],
-          "binding": null
-        },
-        {
-          "key": "social-youtube",
-          "section": "pages",
-          "label": "Social links · YouTube",
-          "kind": "social",
-          "platform": "youtube",
-          "default": {
-            "id": "social-youtube",
-            "title": "YouTube",
-            "subtitle": "SOCIAL MEDIA",
-            "body": "",
-            "link": "",
-            "image": "",
-            "date": "",
-            "visible": true,
-            "order": 203
-          },
-          "fields": [
-            {
-              "name": "link",
-              "label": "YouTube URL",
-              "type": "url"
-            }
-          ],
-          "binding": null
-        },
-        {
-          "key": "social-facebook",
-          "section": "pages",
-          "label": "Social links · Facebook",
-          "kind": "social",
-          "platform": "facebook",
-          "default": {
-            "id": "social-facebook",
-            "title": "Facebook",
-            "subtitle": "SOCIAL MEDIA",
-            "body": "",
-            "link": "",
-            "image": "",
-            "date": "",
-            "visible": true,
-            "order": 204
-          },
-          "fields": [
-            {
-              "name": "link",
-              "label": "Facebook URL",
-              "type": "url"
-            }
-          ],
-          "binding": null
-        },
-        {
-          "key": "social-bluesky",
-          "section": "pages",
-          "label": "Social links · Bluesky",
-          "kind": "social",
-          "platform": "bluesky",
-          "default": {
-            "id": "social-bluesky",
-            "title": "Bluesky",
-            "subtitle": "SOCIAL MEDIA",
-            "body": "",
-            "link": "",
-            "image": "",
-            "date": "",
-            "visible": true,
-            "order": 205
-          },
-          "fields": [
-            {
-              "name": "link",
-              "label": "Bluesky URL",
-              "type": "url"
-            }
-          ],
-          "binding": null
+          "key": "people-about.html",
+          "section": "people",
+          "label": "People and board members",
+          "kind": "collection"
         }
       ]
     },
@@ -538,6 +394,18 @@
             }
           ],
           "binding": null
+        }
+      ]
+    },
+    {
+      "file": "faq.html",
+      "title": "FAQ",
+      "blocks": [
+        {
+          "key": "faqs-faq.html",
+          "section": "faqs",
+          "label": "Frequently asked questions",
+          "kind": "collection"
         }
       ]
     },
@@ -1008,18 +876,6 @@
               "subtitle": ".eyebrow"
             }
           }
-        }
-      ]
-    },
-    {
-      "file": "news-media.html",
-      "title": "News & Media",
-      "blocks": [
-        {
-          "key": "media-news-media.html",
-          "section": "media",
-          "label": "Press, news, videos, and community coverage",
-          "kind": "collection"
         }
       ]
     },
