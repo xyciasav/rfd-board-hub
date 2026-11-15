@@ -3,7 +3,7 @@ import {join} from 'node:path';
 import {randomBytes} from 'node:crypto';
 
 const id=()=>randomBytes(8).toString('hex'),clean=v=>String(v??'').trim();
-const sections=['events','pages','civics','supporters','photos','media','faqs','people'];
+const sections=['events','programs','pages','civics','supporters','photos','media','faqs','people'];
 const blank=()=>Object.fromEntries(sections.map(section=>[section,[]]));
 const safeShowtimes=value=>(Array.isArray(value)?value:[]).slice(0,12).map(item=>({label:clean(item?.label).slice(0,40),url:clean(item?.url).slice(0,1000)})).filter(item=>item.label&&item.url);
 const safeItem=(value={})=>({id:clean(value.id)||id(),title:clean(value.title).slice(0,160),subtitle:clean(value.subtitle).slice(0,240),body:clean(value.body).slice(0,8000),link:clean(value.link).slice(0,1000),buttonLabel:clean(value.buttonLabel).slice(0,80),image:clean(value.image).slice(0,1000),date:clean(value.date).slice(0,40),time:clean(value.time).slice(0,40),location:clean(value.location).slice(0,300),lineup:clean(value.lineup).slice(0,3000),showtimes:safeShowtimes(value.showtimes),status:clean(value.status).slice(0,80),showPopup:value.showPopup===true,detailPage:value.detailPage===true,registrationEnabled:value.registrationEnabled===true,registrationCapacity:Math.max(0,Math.min(10000,Number(value.registrationCapacity)||0)),registrationNote:clean(value.registrationNote).slice(0,5000),visible:value.visible!==false,order:Number.isFinite(Number(value.order))?Number(value.order):0});
@@ -29,6 +29,13 @@ export function createWebsiteContent({db,save,audit,dataDir,sendEmail=async()=>(
   if(!db.websiteContent.draft.pages.some(item=>item.status===archivedConcert.status))db.websiteContent.draft.pages.push(archivedConcert);
   if(!Array.isArray(db.websiteContent.draft.faqs)||!db.websiteContent.draft.faqs.length)db.websiteContent.draft.faqs=[{id:'faqnonpartisan01',title:'You say you are nonpartisan. Does that mean you support Democrats?',subtitle:'',body:'Rage for Democracy is a nonpartisan nonprofit. We do not endorse political parties or candidates. We focus on civic education, community participation, mutual aid, and helping people understand how government affects their lives.',link:'',image:'',visible:true,order:0}];
   if(!Array.isArray(db.websiteContent.draft.people)||!db.websiteContent.draft.people.length)db.websiteContent.draft.people=[{id:'personmike000001',title:'Mike Rodriguez',subtitle:'Co-founder',body:'',link:'',image:'',visible:true,order:0},{id:'personrae0000002',title:'Rae',subtitle:'Co-founder',body:'',link:'',image:'',visible:true,order:10}];
+  if(!Array.isArray(db.websiteContent.draft.programs)||!db.websiteContent.draft.programs.length)db.websiteContent.draft.programs=[
+    {id:'programrageclean1',title:'Rage Clean',subtitle:'Neighbors taking care of shared spaces.',body:'Community cleanup and direct-action projects that make care visible.',link:'',image:'',visible:true,order:0},
+    {id:'programcivics001',title:'Citizen Civics Club',subtitle:'Practical, nonpartisan civic education.',body:'Accessible sessions and resources that help people understand their rights and government.',link:'',image:'',visible:true,order:10},
+    {id:'programcloset001',title:'Instrument Closet',subtitle:'Putting music within reach.',body:'A community resource for collecting and sharing instruments with people who need them.',link:'',image:'',visible:true,order:20},
+    {id:'programchecks001',title:'Checks and Balances',subtitle:'Accountability through understanding.',body:'Resources and conversations about how public institutions, oversight, and civic accountability work.',link:'',image:'',visible:true,order:30},
+    {id:'programconcert01',title:'Concerts',subtitle:'Music, community, and participation.',body:'All-ages events that connect local music with community organizations and civic involvement.',link:'',image:'',visible:true,order:40}
+  ];
   db.websiteContent.draft=safeContent(db.websiteContent.draft);db.websiteContent.published=safeContent(db.websiteContent.published);db.websiteContent.history=Array.isArray(db.websiteContent.history)?db.websiteContent.history:[];
   const reply=(res,status,data,headers={})=>{res.writeHead(status,{'content-type':'application/json','cache-control':'no-store',...headers});res.end(JSON.stringify(data));};
   async function publicRoute(req,res,url){

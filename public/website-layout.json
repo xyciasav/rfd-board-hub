@@ -467,6 +467,18 @@
       ]
     },
     {
+      "file": "programs.html",
+      "title": "Programs",
+      "blocks": [
+        {
+          "key": "programs-programs.html",
+          "section": "programs",
+          "label": "Program pages",
+          "kind": "collection"
+        }
+      ]
+    },
+    {
       "file": "citizen-civics-club.html",
       "title": "Citizen Civics Club",
       "blocks": [
