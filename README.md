@@ -2,6 +2,8 @@
 
 A private, self-hosted command center for Rage for Democracy board members. The first release combines:
 
+Version 1.17 adds a public-site volunteer portal without exposing Board Hub access. Board members publish opportunities and manage rosters from **Volunteers**; volunteers use `/volunteer.html` on the public website with a passwordless Resend sign-in link. Completed shifts can create existing volunteer-hour records automatically. Both stacks must share `WEBSITE_SIGNUP_TOKEN`; set `PUBLIC_WEBSITE_URL` when the site is not `https://ragefordemocracy.com`.
+
 - Night of the Living Loud status pulled directly from Vikunja and Eventbrite
 - A shared organizational transaction ledger
 - A marketing workspace fed by labeled Vikunja tasks, with a shared print-file library and PDF generation

@@ -1,6 +1,6 @@
 services:
   rfd-board-hub:
-    image: ghcr.io/xyciasav/rfd-board-hub:1.16.24
+    image: ghcr.io/xyciasav/rfd-board-hub:1.17.0
     container_name: rfd-board-hub
     restart: unless-stopped
     ports:
@@ -8,6 +8,7 @@ services:
     environment:
       NODE_ENV: production
       WEBSITE_SIGNUP_TOKEN: ${WEBSITE_SIGNUP_TOKEN:-}
+      PUBLIC_WEBSITE_URL: ${PUBLIC_WEBSITE_URL:-https://ragefordemocracy.com}
       WEBSITE_SIGNUP_ORIGINS: ${WEBSITE_SIGNUP_ORIGINS:-https://ragefordemocracy.com,https://www.ragefordemocracy.com}
       PORT: 3000
       DATA_DIR: /app/data
